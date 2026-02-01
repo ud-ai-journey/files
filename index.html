@@ -1,0 +1,1167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SuperScale Co. — Building Brands That Hit Different 🚀</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@400;500;700&family=Righteous&display=swap" rel="stylesheet">
+  
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --electric-blue: #00D9FF;
+      --hot-pink: #FF006E;
+      --laser-yellow: #FFBE0B;
+      --neon-green: #8BF500;
+      --purple-haze: #8338EC;
+      --sunset-orange: #FB5607;
+      --bg-dark: #0A0E27;
+      --bg-card: #1A1F3A;
+      --text-primary: #FFFFFF;
+      --text-glow: #00D9FF;
+    }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg-dark);
+      color: var(--text-primary);
+      overflow-x: hidden;
+      cursor: none;
+    }
+
+    /* CUSTOM CURSOR */
+    #cursor {
+      width: 20px;
+      height: 20px;
+      border: 2px solid var(--electric-blue);
+      border-radius: 50%;
+      position: fixed;
+      pointer-events: none;
+      z-index: 9999;
+      transition: all 0.1s ease;
+      mix-blend-mode: difference;
+    }
+
+    #cursor-follower {
+      width: 40px;
+      height: 40px;
+      border: 1px solid var(--hot-pink);
+      border-radius: 50%;
+      position: fixed;
+      pointer-events: none;
+      z-index: 9998;
+      transition: all 0.3s ease;
+      opacity: 0.5;
+    }
+
+    /* ANIMATED GRADIENT BACKGROUND */
+    .gradient-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      background: linear-gradient(135deg, 
+        var(--bg-dark) 0%, 
+        #1a1535 25%,
+        #2a1f4a 50%,
+        #1a1535 75%,
+        var(--bg-dark) 100%);
+      background-size: 400% 400%;
+      animation: gradientShift 15s ease infinite;
+    }
+
+    @keyframes gradientShift {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+
+    /* FLOATING SHAPES */
+    .floating-shapes {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+
+    .shape {
+      position: absolute;
+      opacity: 0.15;
+      filter: blur(80px);
+    }
+
+    .shape1 {
+      width: 400px;
+      height: 400px;
+      background: var(--electric-blue);
+      border-radius: 50%;
+      top: 10%;
+      left: 5%;
+      animation: float1 20s ease-in-out infinite;
+    }
+
+    .shape2 {
+      width: 300px;
+      height: 300px;
+      background: var(--hot-pink);
+      border-radius: 50%;
+      top: 60%;
+      right: 10%;
+      animation: float2 18s ease-in-out infinite;
+    }
+
+    .shape3 {
+      width: 350px;
+      height: 350px;
+      background: var(--purple-haze);
+      border-radius: 50%;
+      bottom: 10%;
+      left: 50%;
+      animation: float3 22s ease-in-out infinite;
+    }
+
+    @keyframes float1 {
+      0%, 100% { transform: translate(0, 0) rotate(0deg); }
+      33% { transform: translate(50px, -50px) rotate(120deg); }
+      66% { transform: translate(-30px, 30px) rotate(240deg); }
+    }
+
+    @keyframes float2 {
+      0%, 100% { transform: translate(0, 0) rotate(0deg); }
+      33% { transform: translate(-40px, 40px) rotate(-120deg); }
+      66% { transform: translate(40px, -20px) rotate(-240deg); }
+    }
+
+    @keyframes float3 {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      50% { transform: translate(30px, -30px) scale(1.1); }
+    }
+
+    /* CONTAINER */
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 5%;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* HERO SECTION */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 2rem 5%;
+      position: relative;
+    }
+
+    .hero-badge {
+      background: linear-gradient(135deg, var(--hot-pink), var(--purple-haze));
+      padding: 0.5rem 1.5rem;
+      border-radius: 50px;
+      font-size: 0.875rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 2rem;
+      animation: popIn 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+      box-shadow: 0 10px 40px rgba(255, 0, 110, 0.3);
+    }
+
+    @keyframes popIn {
+      0% { transform: scale(0); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    .hero-title {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(3rem, 10vw, 7rem);
+      font-weight: 800;
+      line-height: 1;
+      margin-bottom: 1.5rem;
+      background: linear-gradient(135deg, 
+        var(--electric-blue) 0%, 
+        var(--hot-pink) 25%,
+        var(--laser-yellow) 50%,
+        var(--neon-green) 75%,
+        var(--purple-haze) 100%);
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: textShine 3s linear infinite, titleDrop 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    @keyframes textShine {
+      to { background-position: 200% center; }
+    }
+
+    @keyframes titleDrop {
+      0% { transform: translateY(-50px); opacity: 0; }
+      100% { transform: translateY(0); opacity: 1; }
+    }
+
+    .hero-subtitle {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(1.5rem, 4vw, 3rem);
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      animation: titleDrop 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) 0.2s backwards;
+      text-shadow: 0 0 20px rgba(0, 217, 255, 0.5);
+    }
+
+    .hero-description {
+      font-size: clamp(1rem, 2vw, 1.25rem);
+      max-width: 700px;
+      margin: 0 auto 3rem;
+      opacity: 0.9;
+      animation: fadeInUp 0.8s ease 0.4s backwards;
+    }
+
+    @keyframes fadeInUp {
+      0% { transform: translateY(30px); opacity: 0; }
+      100% { transform: translateY(0); opacity: 0.9; }
+    }
+
+    .hero-cta {
+      display: inline-flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      justify-content: center;
+      animation: fadeInUp 0.8s ease 0.6s backwards;
+    }
+
+    .btn {
+      padding: 1rem 2.5rem;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: 1.125rem;
+      border: none;
+      cursor: none;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--hot-pink), var(--purple-haze));
+      color: white;
+      box-shadow: 0 10px 40px rgba(255, 0, 110, 0.4);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-3px) scale(1.05);
+      box-shadow: 0 15px 50px rgba(255, 0, 110, 0.6);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--electric-blue);
+      border: 2px solid var(--electric-blue);
+      box-shadow: 0 0 20px rgba(0, 217, 255, 0.3);
+    }
+
+    .btn-secondary:hover {
+      background: var(--electric-blue);
+      color: var(--bg-dark);
+      transform: translateY(-3px) scale(1.05);
+    }
+
+    .btn::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.3);
+      transform: translate(-50%, -50%);
+      transition: width 0.6s, height 0.6s;
+    }
+
+    .btn:hover::before {
+      width: 300px;
+      height: 300px;
+    }
+
+    /* SCROLL INDICATOR */
+    .scroll-indicator {
+      position: absolute;
+      bottom: 3rem;
+      left: 50%;
+      transform: translateX(-50%);
+      animation: bounce 2s infinite;
+    }
+
+    @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+      40% { transform: translateX(-50%) translateY(-10px); }
+      60% { transform: translateX(-50%) translateY(-5px); }
+    }
+
+    .scroll-indicator svg {
+      filter: drop-shadow(0 0 10px var(--electric-blue));
+    }
+
+    /* SECTION STYLES */
+    section {
+      padding: 8rem 5%;
+      position: relative;
+      z-index: 1;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 5rem;
+      opacity: 0;
+      transform: translateY(50px);
+      transition: all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .section-header.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .section-badge {
+      display: inline-block;
+      background: rgba(0, 217, 255, 0.1);
+      border: 1px solid var(--electric-blue);
+      padding: 0.5rem 1.5rem;
+      border-radius: 50px;
+      font-size: 0.875rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 1rem;
+      color: var(--electric-blue);
+    }
+
+    .section-title {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      font-weight: 800;
+      margin-bottom: 1rem;
+      background: linear-gradient(135deg, var(--electric-blue), var(--hot-pink));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .section-description {
+      font-size: clamp(1rem, 2vw, 1.25rem);
+      max-width: 700px;
+      margin: 0 auto;
+      opacity: 0.8;
+    }
+
+    /* PRINCIPLES SECTION */
+    .principles-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 4rem;
+    }
+
+    .principle-card {
+      background: linear-gradient(135deg, rgba(26, 31, 58, 0.8), rgba(26, 31, 58, 0.4));
+      border: 1px solid rgba(0, 217, 255, 0.2);
+      padding: 3rem 2rem;
+      border-radius: 30px;
+      position: relative;
+      overflow: hidden;
+      opacity: 0;
+      transform: translateY(50px) scale(0.9);
+      transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+      backdrop-filter: blur(10px);
+    }
+
+    .principle-card.visible {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+
+    .principle-card::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(0, 217, 255, 0.1) 0%, transparent 70%);
+      opacity: 0;
+      transition: opacity 0.5s;
+    }
+
+    .principle-card:hover::before {
+      opacity: 1;
+    }
+
+    .principle-card:hover {
+      transform: translateY(-10px) scale(1.02);
+      border-color: var(--electric-blue);
+      box-shadow: 0 20px 60px rgba(0, 217, 255, 0.3);
+    }
+
+    .principle-icon {
+      font-size: 3rem;
+      margin-bottom: 1.5rem;
+      filter: drop-shadow(0 0 20px currentColor);
+    }
+
+    .principle-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.75rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      background: linear-gradient(135deg, var(--laser-yellow), var(--sunset-orange));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .principle-text {
+      opacity: 0.8;
+      line-height: 1.6;
+    }
+
+    /* VENTURES SECTION */
+    .ventures-grid {
+      display: grid;
+      gap: 4rem;
+      margin-top: 4rem;
+    }
+
+    .venture-card {
+      display: grid;
+      grid-template-columns: 250px 1fr;
+      gap: 3rem;
+      background: linear-gradient(135deg, rgba(26, 31, 58, 0.8), rgba(26, 31, 58, 0.4));
+      border: 1px solid rgba(255, 0, 110, 0.2);
+      padding: 3rem;
+      border-radius: 40px;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      opacity: 0;
+      transform: translateX(-50px);
+      transition: all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+      backdrop-filter: blur(10px);
+    }
+
+    .venture-card.visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .venture-card:nth-child(even) {
+      transform: translateX(50px);
+    }
+
+    .venture-card:nth-child(even).visible {
+      transform: translateX(0);
+    }
+
+    .venture-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(135deg, 
+        rgba(0, 217, 255, 0.05),
+        rgba(255, 0, 110, 0.05),
+        rgba(139, 245, 0, 0.05));
+      opacity: 0;
+      transition: opacity 0.5s;
+    }
+
+    .venture-card:hover::before {
+      opacity: 1;
+    }
+
+    .venture-card:hover {
+      transform: translateY(-10px);
+      border-color: var(--hot-pink);
+      box-shadow: 0 30px 80px rgba(255, 0, 110, 0.3);
+    }
+
+    .venture-logo {
+      width: 200px;
+      height: 200px;
+      background: linear-gradient(135deg, rgba(0, 217, 255, 0.1), rgba(255, 0, 110, 0.1));
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+      border: 2px solid rgba(255, 255, 255, 0.1);
+      animation: rotateLogo 10s linear infinite;
+      position: relative;
+    }
+
+    @keyframes rotateLogo {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .venture-logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      animation: rotateLogoReverse 10s linear infinite;
+    }
+
+    @keyframes rotateLogoReverse {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(-360deg); }
+    }
+
+    .venture-content h3 {
+      font-family: 'Righteous', cursive;
+      font-size: clamp(1.75rem, 3vw, 2.5rem);
+      margin-bottom: 0.5rem;
+      color: var(--laser-yellow);
+      text-shadow: 0 0 20px rgba(255, 190, 11, 0.5);
+    }
+
+    .venture-tagline {
+      font-size: 1.125rem;
+      font-weight: 700;
+      color: var(--hot-pink);
+      margin-bottom: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .venture-description {
+      opacity: 0.9;
+      line-height: 1.7;
+      margin-bottom: 2rem;
+    }
+
+    .venture-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--electric-blue);
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 1.125rem;
+      transition: all 0.3s ease;
+      cursor: none;
+    }
+
+    .venture-link:hover {
+      gap: 1rem;
+      color: var(--laser-yellow);
+      text-shadow: 0 0 20px currentColor;
+    }
+
+    /* ARCHITECTURE SECTION */
+    .architecture-visual {
+      max-width: 800px;
+      margin: 4rem auto;
+      padding: 4rem;
+      background: linear-gradient(135deg, rgba(131, 56, 236, 0.1), rgba(255, 0, 110, 0.1));
+      border: 2px solid rgba(131, 56, 236, 0.3);
+      border-radius: 40px;
+      position: relative;
+      backdrop-filter: blur(10px);
+    }
+
+    .architecture-visual::before,
+    .architecture-visual::after {
+      content: '';
+      position: absolute;
+      width: 100px;
+      height: 100px;
+      border: 2px solid var(--purple-haze);
+      border-radius: 50%;
+      opacity: 0.3;
+    }
+
+    .architecture-visual::before {
+      top: -20px;
+      left: -20px;
+      animation: pulse 3s ease infinite;
+    }
+
+    .architecture-visual::after {
+      bottom: -20px;
+      right: -20px;
+      animation: pulse 3s ease infinite 1.5s;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); opacity: 0.3; }
+      50% { transform: scale(1.2); opacity: 0.6; }
+    }
+
+    .arch-level {
+      text-align: center;
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(1.5rem, 3vw, 2.25rem);
+      font-weight: 700;
+      margin: 2rem 0;
+      position: relative;
+    }
+
+    .arch-level:nth-child(1) { color: var(--laser-yellow); }
+    .arch-level:nth-child(3) { color: var(--electric-blue); }
+    .arch-level:nth-child(5) { color: var(--neon-green); }
+
+    .arch-arrow {
+      text-align: center;
+      font-size: 2rem;
+      color: var(--hot-pink);
+      animation: arrowBounce 2s ease infinite;
+    }
+
+    @keyframes arrowBounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(10px); }
+    }
+
+    /* FUTURE SECTION */
+    .future-content {
+      text-align: center;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 4rem 2rem;
+      background: linear-gradient(135deg, rgba(139, 245, 0, 0.1), rgba(255, 190, 11, 0.1));
+      border: 2px solid var(--neon-green);
+      border-radius: 40px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .future-content::before {
+      content: '✨';
+      position: absolute;
+      font-size: 8rem;
+      opacity: 0.1;
+      top: -2rem;
+      right: -2rem;
+      animation: spin 20s linear infinite;
+    }
+
+    @keyframes spin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    .future-title {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 800;
+      margin-bottom: 1rem;
+      background: linear-gradient(135deg, var(--neon-green), var(--laser-yellow));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .future-subtitle {
+      font-size: clamp(1.25rem, 3vw, 1.75rem);
+      opacity: 0.9;
+    }
+
+    /* FOOTER */
+    footer {
+      padding: 6rem 5% 3rem;
+      border-top: 1px solid rgba(0, 217, 255, 0.2);
+      text-align: center;
+      position: relative;
+    }
+
+    .footer-logo {
+      font-family: 'Righteous', cursive;
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      background: linear-gradient(135deg, var(--electric-blue), var(--hot-pink), var(--laser-yellow));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .footer-tagline {
+      font-size: 1rem;
+      opacity: 0.7;
+      margin-bottom: 0.5rem;
+    }
+
+    .footer-copyright {
+      font-size: 0.875rem;
+      opacity: 0.5;
+    }
+
+    /* MOBILE RESPONSIVE */
+    @media (max-width: 768px) {
+      .venture-card {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+
+      .venture-logo {
+        margin: 0 auto;
+      }
+
+      .principles-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .btn {
+        width: 100%;
+      }
+
+      body {
+        cursor: auto;
+      }
+
+      #cursor, #cursor-follower {
+        display: none;
+      }
+    }
+
+    /* GLITCH EFFECT */
+    .glitch {
+      position: relative;
+      display: inline-block;
+    }
+
+    .glitch::before,
+    .glitch::after {
+      content: attr(data-text);
+      position: absolute;
+      top: 0;
+      left: 0;
+      opacity: 0.8;
+    }
+
+    .glitch::before {
+      animation: glitch-1 0.3s infinite;
+      color: var(--electric-blue);
+      z-index: -1;
+    }
+
+    .glitch::after {
+      animation: glitch-2 0.3s infinite;
+      color: var(--hot-pink);
+      z-index: -2;
+    }
+
+    @keyframes glitch-1 {
+      0%, 100% { transform: translate(0); }
+      20% { transform: translate(-2px, 2px); }
+      40% { transform: translate(-2px, -2px); }
+      60% { transform: translate(2px, 2px); }
+      80% { transform: translate(2px, -2px); }
+    }
+
+    @keyframes glitch-2 {
+      0%, 100% { transform: translate(0); }
+      20% { transform: translate(2px, -2px); }
+      40% { transform: translate(2px, 2px); }
+      60% { transform: translate(-2px, -2px); }
+      80% { transform: translate(-2px, 2px); }
+    }
+
+    /* LOGOS GALLERY */
+    .logos-section {
+      padding: 8rem 5%;
+    }
+
+    .logos-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+      align-items: center;
+      justify-items: center;
+    }
+
+    .logo-item {
+      background: linear-gradient(135deg, rgba(26, 31, 58, 0.8), rgba(26, 31, 58, 0.4));
+      border: 1px solid rgba(0, 217, 255, 0.2);
+      padding: 2rem;
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 200px;
+      transition: all 0.3s ease;
+      opacity: 0;
+      transform: scale(0.9);
+      animation: fadeInScale 0.6s ease-out forwards;
+      backdrop-filter: blur(10px);
+    }
+
+    .logo-item:hover {
+      transform: scale(1.05);
+      border-color: var(--electric-blue);
+      box-shadow: 0 15px 40px rgba(0, 217, 255, 0.2);
+    }
+
+    .logo-item img {
+      max-width: 100%;
+      max-height: 180px;
+      object-fit: contain;
+      filter: drop-shadow(0 0 10px rgba(0, 217, 255, 0.2));
+    }
+
+    @keyframes fadeInScale {
+      from {
+        opacity: 0;
+        transform: scale(0.8);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    .logo-item:nth-child(1) { animation-delay: 0.1s; }
+    .logo-item:nth-child(2) { animation-delay: 0.2s; }
+    .logo-item:nth-child(3) { animation-delay: 0.3s; }
+  </style>
+</head>
+<body>
+  <!-- CUSTOM CURSOR -->
+  <div id="cursor"></div>
+  <div id="cursor-follower"></div>
+
+  <!-- ANIMATED BACKGROUND -->
+  <div class="gradient-bg"></div>
+  <div class="floating-shapes">
+    <div class="shape shape1"></div>
+    <div class="shape shape2"></div>
+    <div class="shape shape3"></div>
+  </div>
+
+  <!-- HERO SECTION -->
+  <section class="hero">
+    <div class="hero-badge">🔥 PARENT BRAND STUDIO</div>
+    
+    <h1 class="hero-title glitch" data-text="SuperScale Co.">
+      SuperScale Co.
+    </h1>
+    
+    <h2 class="hero-subtitle">
+      Building brands that hit different 🚀
+    </h2>
+    
+    <p class="hero-description">
+      A next-gen parent company creating independent businesses that solve real problems, 
+      vibe with culture, and scale without losing their soul.
+    </p>
+    
+    <div class="hero-cta">
+      <a href="#ventures" class="btn btn-primary">
+        <span style="position: relative; z-index: 1;">Explore Our Ventures ✨</span>
+      </a>
+      <a href="#principles" class="btn btn-secondary">
+        <span style="position: relative; z-index: 1;">Our Philosophy 💭</span>
+      </a>
+    </div>
+    
+    <div class="scroll-indicator">
+      <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="var(--electric-blue)" stroke-width="2">
+        <path d="M12 5v14M19 12l-7 7-7-7" />
+      </svg>
+    </div>
+  </section>
+
+  <!-- PRINCIPLES SECTION -->
+  <section id="principles">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-badge">💎 OUR DNA</div>
+        <h2 class="section-title">What Makes Us Different</h2>
+        <p class="section-description">
+          We're not your typical holding company. Here's what drives us.
+        </p>
+      </div>
+      
+      <div class="principles-grid">
+        <div class="principle-card">
+          <div class="principle-icon">🎯</div>
+          <h3 class="principle-title">No BS, Just Systems</h3>
+          <p class="principle-text">
+            We don't chase trends or hype. We build sustainable systems that actually work.
+          </p>
+        </div>
+        
+        <div class="principle-card">
+          <div class="principle-icon">🌟</div>
+          <h3 class="principle-title">Independent Vibes</h3>
+          <p class="principle-text">
+            Each brand has its own identity, team, and mission. We're the backbone, not the boss.
+          </p>
+        </div>
+        
+        <div class="principle-card">
+          <div class="principle-icon">⚡</div>
+          <h3 class="principle-title">Culture First</h3>
+          <p class="principle-text">
+            We build brands that resonate with real people, not just market research reports.
+          </p>
+        </div>
+        
+        <div class="principle-card">
+          <div class="principle-icon">🔥</div>
+          <h3 class="principle-title">Scale Smart</h3>
+          <p class="principle-text">
+            Growth is cool, but not at the cost of what makes a brand special.
+          </p>
+        </div>
+        
+        <div class="principle-card">
+          <div class="principle-icon">💡</div>
+          <h3 class="principle-title">Solve Real Problems</h3>
+          <p class="principle-text">
+            We only build stuff people actually need. No vanity projects.
+          </p>
+        </div>
+        
+        <div class="principle-card">
+          <div class="principle-icon">🎨</div>
+          <h3 class="principle-title">Stay Creative</h3>
+          <p class="principle-text">
+            Cookie-cutter is boring. Every brand we build has its own flavor.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VENTURES SECTION -->
+  <section id="ventures">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-badge">🚀 OUR BRANDS</div>
+        <h2 class="section-title">The SuperScale Universe</h2>
+        <p class="section-description">
+          Meet the independent brands we've built from the ground up.
+        </p>
+      </div>
+      
+      <div class="ventures-grid">
+        <!-- Freshscribe -->
+        <div class="venture-card">
+          <div class="venture-logo">
+            <img src="logos/IMG-20251209-WA0022.jpg" alt="Freshscribe">
+          </div>
+          
+          <div class="venture-content">
+            <h3>Freshscribe</h3>
+            <p class="venture-tagline">🥬 Fresh. Reliable. Subscription-first.</p>
+            <p class="venture-description">
+              Your daily dose of freshness, delivered. A subscription-based produce brand that brings 
+              farm-fresh fruits and vegetables straight to your door. No middlemen, no markup, 
+              just quality produce and a system that works.
+            </p>
+            <a href="#" class="venture-link">
+              Check out Freshscribe
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+        
+        <!-- Chills & Co. -->
+        <div class="venture-card">
+          <div class="venture-logo">
+            <img src="logos/ChatGPT%20Image%20Feb%201%2C%202026%2C%2009_24_55%20AM.png" alt="Chills & Co.">
+          </div>
+          
+          <div class="venture-content">
+            <h3>Chills & Co.</h3>
+            <p class="venture-tagline">😎 Workwear that gets it.</p>
+            <p class="venture-description">
+              Office vibes, Gen-Z energy. We make T-shirts and apparel for the 9-to-5 crew who 
+              doesn't take themselves too seriously. Think: corporate memes, work culture jokes, 
+              and fits that transition from desk to happy hour.
+            </p>
+            <a href="#" class="venture-link">
+              Shop Chills & Co.
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ARCHITECTURE SECTION -->
+  <section id="architecture">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-badge">🏗️ THE FRAMEWORK</div>
+        <h2 class="section-title">How It All Works</h2>
+        <p class="section-description">
+          Simple structure, powerful results.
+        </p>
+      </div>
+      
+      <div class="architecture-visual">
+        <div class="arch-level">SuperScale Co.</div>
+        <div class="arch-arrow">↓</div>
+        <div class="arch-level">Independent Brands</div>
+        <div class="arch-arrow">↓</div>
+        <div class="arch-level">Shared Backbone</div>
+        
+        <p style="margin-top: 3rem; text-align: center; opacity: 0.8; line-height: 1.7;">
+          Each venture runs independently with its own team, identity, and vision. 
+          SuperScale provides the infrastructure, resources, and strategic support. 
+          Think of us as the power-up that lets brands focus on what they do best.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FUTURE SECTION -->
+  <section id="future">
+    <div class="container">
+      <div class="future-content">
+        <h2 class="future-title">More Coming Soon...</h2>
+        <p class="future-subtitle">
+          We're always building. More brands, same philosophy. 
+          The SuperScale universe is just getting started. 🌌
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- LOGOS GALLERY SECTION -->
+  <section id="logos" class="logos-section">
+    <div class="container">
+      <div class="section-header visible">
+        <div class="section-badge">🎨 OUR LOGOS</div>
+        <h2 class="section-title">Visual Identity</h2>
+        <p class="section-description">
+          The visual marks behind our brands and projects.
+        </p>
+      </div>
+
+      <div class="logos-grid">
+        <div class="logo-item">
+          <img src="logos/ChatGPT%20Image%20Feb%201%2C%202026%2C%2009_24_50%20AM.png" alt="Brand Logo 1">
+        </div>
+        <div class="logo-item">
+          <img src="logos/ChatGPT%20Image%20Feb%201%2C%202026%2C%2009_24_55%20AM.png" alt="Brand Logo 2">
+        </div>
+        <div class="logo-item">
+          <img src="logos/IMG-20251209-WA0022.jpg" alt="Brand Logo 3">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-logo">SuperScale Co.</div>
+      <p class="footer-tagline">Building brands that actually matter ✨</p>
+      <p class="footer-copyright">© 2026 SuperScale Co. Made with 💜 and lots of ☕</p>
+    </div>
+  </footer>
+
+  <script>
+    // CUSTOM CURSOR
+    const cursor = document.getElementById('cursor');
+    const follower = document.getElementById('cursor-follower');
+    
+    let mouseX = 0, mouseY = 0;
+    let followerX = 0, followerY = 0;
+    
+    document.addEventListener('mousemove', (e) => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+      cursor.style.left = mouseX + 'px';
+      cursor.style.top = mouseY + 'px';
+    });
+    
+    function animateFollower() {
+      followerX += (mouseX - followerX) * 0.1;
+      followerY += (mouseY - followerY) * 0.1;
+      follower.style.left = followerX + 'px';
+      follower.style.top = followerY + 'px';
+      requestAnimationFrame(animateFollower);
+    }
+    animateFollower();
+
+    // INTERSECTION OBSERVER
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '-50px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.section-header, .principle-card, .venture-card').forEach(el => {
+      observer.observe(el);
+    });
+
+    // SMOOTH SCROLL
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+
+    // BUTTON RIPPLE EFFECT
+    document.querySelectorAll('.btn').forEach(btn => {
+      btn.addEventListener('click', function(e) {
+        const ripple = document.createElement('span');
+        const rect = this.getBoundingClientRect();
+        const size = Math.max(rect.width, rect.height);
+        const x = e.clientX - rect.left - size / 2;
+        const y = e.clientY - rect.top - size / 2;
+        
+        ripple.style.width = ripple.style.height = size + 'px';
+        ripple.style.left = x + 'px';
+        ripple.style.top = y + 'px';
+        ripple.classList.add('ripple');
+        
+        this.appendChild(ripple);
+        
+        setTimeout(() => ripple.remove(), 600);
+      });
+    });
+  </script>
+</body>
+</html>

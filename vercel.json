@@ -1,0 +1,11 @@
+{
+  "buildCommand": "",
+  "installCommand": "",
+  "public": ".",
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/superscale-genz.html"
+    }
+  ]
+}
